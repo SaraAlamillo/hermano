@@ -18,8 +18,15 @@ class Vivienda_model extends CI_Model {
         $this->db->update('vivienda', ['Observaciones' => $observaciones], ['idVivienda' => $idVivienda]);
     }
 
-    function listar() {
-        return $this->db->get('vivienda');
+    function listarTodo() {
+        $consulta = $this->db->get('vivienda');
+        return $consulta->result();
+    }
+    
+    public function listarUno($idVivienda) {
+        $this->db->where('idVivienda', $idVivienda);
+        $consulta = $this->db->get('vivienda');
+        return $consulta->row();
     }
 
 }
