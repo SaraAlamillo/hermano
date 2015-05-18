@@ -48,9 +48,14 @@ class Contacto extends CI_Controller {
     }
     
     public function detalle($idContacto) {
+        $this->load->model('provincia_model');
+        
         $parametros = [
             'contacto' => $this->contacto_model->listarUno($idContacto)
         ];
+        
+        $parametros['contacto']->tipo = $this->contacto_model->nombreTipo($parametros['contacto']->tipo);
+        $parametros['contacto']->provincia = $this->provincia_model->getNombre($parametros['contacto']->provincia);
 
         $this->load->view('contacto/detalle', $parametros);
     }
