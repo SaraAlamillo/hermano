@@ -25,7 +25,7 @@ class Contacto extends CI_Controller {
 
     public function cambio($idContacto) {
         if ($this->input->post()) {
-           $this->vivienda_model->cambio($idContacto, $this->input->post());
+            $this->vivienda_model->cambio($idContacto, $this->input->post());
             $this->session->set_flashdata("mensaje", 'Se han realizado las cambios correctamente');
             redirect(site_url("contacto"));
         } else {
@@ -36,30 +36,41 @@ class Contacto extends CI_Controller {
             $this->load->view('contacto/cambio', $parametros);
         }
     }
-    
-    public function nueva() {
+
+    public function nuevo() {
         if ($this->input->post()) {
-           $this->contacto_model->alta($this->input->post());
+            $this->contacto_model->alta($this->input->post());
             $this->session->set_flashdata("mensaje", 'Se ha añadido la vivienda correctamente');
             redirect(site_url("contacto"));
         } else {
-            $this->load->view('contacto/nueva');
+            $this->load->model('provincia_model');
+
+            $parametros = [
+                'lisTratamiento' => $this->contacto_model->listarTipoVia(),
+                'lisTipoVia' => $this->contacto_model->listarTratamiento(),
+                'lisTipo' => $this->contacto_model->listaTipo(),
+                'lisProvincia' => $this->provincia_model->listar()
+            ];
+            
+            $this->load->helper('form');
+            
+            $this->load->view('contacto/nueva', $parametros);
         }
     }
-    
+
     public function detalle($idContacto) {
         $this->load->model('provincia_model');
-        
+
         $parametros = [
             'contacto' => $this->contacto_model->listarUno($idContacto)
         ];
-        
+
         $parametros['contacto']->tipo = $this->contacto_model->nombreTipo($parametros['contacto']->tipo);
         $parametros['contacto']->provincia = $this->provincia_model->getNombre($parametros['contacto']->provincia);
 
         $this->load->view('contacto/detalle', $parametros);
     }
-    
+
     public function eliminar($idContacto) {
         
     }

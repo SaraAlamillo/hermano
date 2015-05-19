@@ -52,6 +52,11 @@ class Contacto_model extends CI_Model {
         $this->load->helper('bd');
         return obtenerEnumerados('contacto', 'tratamiento');
     }
+
+    public function listarTipoVia() {
+        $this->load->helper('bd');
+        return obtenerEnumerados('contacto', 'tipo_via');
+    }
     
     public function nombreTipo($id) {
         $this->db->where('idTipo_Contacto', $id);
