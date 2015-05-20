@@ -25,13 +25,21 @@ class Contacto extends CI_Controller {
 
     public function cambio($idContacto) {
         if ($this->input->post()) {
-            $this->vivienda_model->cambio($idContacto, $this->input->post());
+            $this->contacto_model->cambio($idContacto, $this->input->post());
             $this->session->set_flashdata("mensaje", 'Se han realizado las cambios correctamente');
             redirect(site_url("contacto"));
         } else {
+            $this->load->model('provincia_model');
+            
             $parametros = [
+                'lisTratamiento' => $this->contacto_model->listarTratamiento(),
+                'lisTipoVia' => $this->contacto_model->listarTipoVia(),
+                'lisTipo' => $this->contacto_model->listaTipo(),
+                'lisProvincia' => $this->provincia_model->listar(),
                 'contacto' => $this->contacto_model->listarUno($idContacto)
             ];
+            
+            $this->load->helper('form');
 
             $this->load->view('contacto/cambio', $parametros);
         }
@@ -73,7 +81,7 @@ class Contacto extends CI_Controller {
 
     public function eliminar($idContacto) {
         $this->contacto_model->eliminar($idContacto);
-        $this->lista();
+            redirect(site_url("contacto"));
     }
 
 }
