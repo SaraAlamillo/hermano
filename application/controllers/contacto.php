@@ -46,8 +46,8 @@ class Contacto extends CI_Controller {
             $this->load->model('provincia_model');
 
             $parametros = [
-                'lisTratamiento' => $this->contacto_model->listarTipoVia(),
-                'lisTipoVia' => $this->contacto_model->listarTratamiento(),
+                'lisTratamiento' => $this->contacto_model->listarTratamiento(),
+                'lisTipoVia' => $this->contacto_model->listarTipoVia(),
                 'lisTipo' => $this->contacto_model->listaTipo(),
                 'lisProvincia' => $this->provincia_model->listar()
             ];

@@ -28,7 +28,7 @@
             <p>Facebook: <input type="text" name="facebook" /></p>
             <p>Instagram: <input type="text" name="instagram" /></p>
             <p>Tipo: <?=  crearDesplegable('tipo', $lisTipo, '', ['tipo' => '', 'idTipo_Contacto' => ''], ['desc' => 'tipo', 'valor' => 'idTipo_Contacto'], TRUE) ?></p>
-            <p>Provincia: <?=  crearDesplegable('tipo', $lisProvincia, '', ['nombre' => '', 'idProvincia' => ''], ['desc' => 'nombre', 'valor' => 'idProvincia'], TRUE) ?></p>
+            <p>Provincia: <?=  crearDesplegable('provincia', $lisProvincia, '', ['nombre' => '', 'idProvincia' => ''], ['desc' => 'nombre', 'valor' => 'idProvincia'], TRUE) ?></p>
             <input type="submit" value="Añadir" />
         </form>
     </body>
