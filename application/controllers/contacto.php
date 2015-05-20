@@ -72,7 +72,8 @@ class Contacto extends CI_Controller {
     }
 
     public function eliminar($idContacto) {
-        
+        $this->contacto_model->eliminar($idContacto);
+        $this->lista();
     }
 
 }

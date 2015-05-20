@@ -64,5 +64,9 @@ class Contacto_model extends CI_Model {
         $resultado = $consulta->row();
         return $resultado->tipo;
     }
+    public function eliminar($id) {
+        $this->db->where('idContacto', $id);
+        $this->db->delete('contacto');
+    }
 
 }
