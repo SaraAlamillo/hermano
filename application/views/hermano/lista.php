@@ -24,7 +24,13 @@
                     <td><?= $l->nombre ?></td>
                     <td><?= $l->apellido1 ?></td>
                     <td><?= $l->apellido2 ?></td>
-                    <td><?= $l->vivienda ?></td>
+                    <td>
+                        <ul>
+                            <li>Barriada: <?= $l->vivienda->Barriada ?></li>
+                            <li>Número: <?= $l->vivienda->Numero ?></li>
+                            <li>Línea: <?= $l->vivienda->Linea ?></li>
+                        </ul>
+                    </td>
                     <td><?= $l->familia ?></td>
                     <td>
                         <?= anchor(site_url('hermano/detalle/' . $l->idHermano), 'Ver') ?>

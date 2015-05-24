@@ -8,11 +8,12 @@
     <body>
         <?= anchor(site_url('hermano'), 'Volver al listado') ?>
         <form action="" method="POST">
+            <p>Vivienda: <?= crearDesplegable('vivienda', $viviendas, $hermano->vivienda) ?></p>
             <p>Tratamiento: <?=  crearDesplegable('tratamiento', $lisTratamiento, $hermano->tratamiento, NULL, ['desc' => 'nombre', 'valor' => 'id']) ?></p>
             <p>Nombre: <input type="text" name="nombre" value="<?=$hermano->nombre?>" /></p>
             <p>Primer apellido: <input type="text" name="apellido1" value="<?=$hermano->apellido1?>" /></p>
             <p>Segundo apellido: <input type="text" name="apellido2" value="<?=$hermano->apellido2?>" /></p>
-            <p>DNI: <input type="text" name="cif" value="<?=$hermano->dni?>" /></p>
+            <p>DNI: <input type="text" name="dni" value="<?=$hermano->dni?>" /></p>
             <p>Tipo de vía: <?=  crearDesplegable('tipo_via', $lisTipoVia, $hermano->tipo_via, NULL, ['desc' => 'nombre', 'valor' => 'id']) ?></p>
             <p>Dirección: <input type="text" name="direccion" value="<?=$hermano->direccion?>" /></p>
             <p>Número: <input type="text" name="numero" value="<?=$hermano->numero?>" /></p>

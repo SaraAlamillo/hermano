@@ -15,11 +15,17 @@ class Hermano extends CI_Controller {
     }
 
     public function lista() {
+        $this->load->model('vivienda_model');
+        
         $parametros = [
             'listado' => $this->hermano_model->lista(),
             "mensaje" => $this->session->flashdata("mensaje")
         ];
-
+        
+        foreach ($parametros['listado'] as &$l) {
+            $l->vivienda = $this->vivienda_model->listarUno($l->vivienda);
+        }
+        
         $this->load->view('hermano/lista', $parametros);
     }
 
@@ -37,7 +43,7 @@ class Hermano extends CI_Controller {
 
     public function cambio($idHermano) {
         if ($this->input->post()) {
-            $this->contacto_model->cambio($idHermano, $this->input->post());
+            $this->hermano_model->cambia($idHermano, $this->input->post());
             $this->session->set_flashdata("mensaje", 'Se han realizado las cambios correctamente');
             redirect(site_url("hermano"));
         } else {
@@ -70,7 +76,37 @@ class Hermano extends CI_Controller {
     }
 
     public function nuevo() {
-        
+        if ($this->input->post()) {
+            $this->hermano_model->agrega($this->input->post());
+            $this->session->set_flashdata("mensaje", 'Se ha añadido la vivienda correctamente');
+            redirect(site_url("hermano"));
+        } else {
+             $this->load->model('vivienda_model');
+            $this->load->model('provincia_model');
+
+            $parametros = [
+                'lisTratamiento' => $this->hermano_model->listarTratamiento(),
+                'lisTipoVia' => $this->hermano_model->listarTipoVia(),
+                'lisTipoPago' => $this->hermano_model->listarTipoPago(),
+                'lisProvincia' => $this->provincia_model->listar(),
+                'lisFamilia' => $this->hermano_model->listarFamilia()
+            ];
+            
+            $viviendas = $this->vivienda_model->listarTodo();
+            $parametros['viviendas'] = [];
+            
+            foreach ($viviendas as $v) {
+                $aux = [
+                    'id' => $v->idVivienda,
+                    'nombre' => 'Barriada: ' . $v->Barriada . ' - Línea: ' . $v->Linea . ' - Número: ' . $v->Numero
+                ];
+                array_push($parametros['viviendas'], $aux);
+            }
+            
+            $this->load->helper('form');
+            
+            $this->load->view('hermano/nueva', $parametros);
+        }
     }
 
     public function elimina() {

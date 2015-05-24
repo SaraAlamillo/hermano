@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Crear un contacto</title>
+        <title>Crear un hermano</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <?= anchor(site_url('contacto'), 'Volver al listado') ?>
         <form action="" method="POST">
-            <p>Empresa: <input type="text" name="nombre_empresa" /></p>
+            <p>Vivienda: <?= crearDesplegable('vivienda', $viviendas, '', ['nombre' => '', 'id' => '']) ?></p>
             <p>Tratamiento: <?=  crearDesplegable('tratamiento', $lisTratamiento, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?></p>
             <p>Nombre: <input type="text" name="nombre" /></p>
             <p>Primer apellido: <input type="text" name="apellido1" /></p>
             <p>Segundo apellido: <input type="text" name="apellido2" /></p>
-            <p>CIF: <input type="text" name="cif" /></p>
+            <p>DNI: <input type="text" name="dni" /></p>
             <p>Tipo de vía: <?=  crearDesplegable('tipo_via', $lisTipoVia, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?></p>
             <p>Dirección: <input type="text" name="direccion" /></p>
             <p>Número: <input type="text" name="numero" /></p>
@@ -27,8 +27,11 @@
             <p>Twitter: <input type="text" name="twitter" /></p>
             <p>Facebook: <input type="text" name="facebook" /></p>
             <p>Instagram: <input type="text" name="instagram" /></p>
-            <p>Tipo: <?=  crearDesplegable('tipo', $lisTipo, '', ['tipo' => '', 'idTipo_Contacto' => ''], ['desc' => 'tipo', 'valor' => 'idTipo_Contacto'], TRUE) ?></p>
             <p>Provincia: <?=  crearDesplegable('provincia', $lisProvincia, '', ['nombre' => '', 'idProvincia' => ''], ['desc' => 'nombre', 'valor' => 'idProvincia'], TRUE) ?></p>
+            <p>Tipo de pago: <?= crearDesplegable('tipo', $lisTipoPago, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?></p>
+            <p>Cuenta corriente: <input type="text" name="cuenta_corriente" /></p>
+            <p>Familia: <?= crearDesplegable('familia', $lisFamilia, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?></p>
+            <p>Medalla: <?= crearListaRadio('medalla', [['nombre' => 'Si', 'id' => '1'], ['nombre' => 'No', 'id' => '0']]) ?></p>
             <input type="submit" value="Añadir" />
         </form>
     </body>
