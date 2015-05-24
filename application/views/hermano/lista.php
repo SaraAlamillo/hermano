@@ -35,7 +35,7 @@
                     <td>
                         <?= anchor(site_url('hermano/detalle/' . $l->idHermano), 'Ver') ?>
                         <?= anchor(site_url('hermano/cambio/' . $l->idHermano), 'Modificar') ?>
-                        <?= anchor(site_url('hermano/eliminar/' . $l->idHermano), 'Eliminar') ?>
+                        <?= anchor(site_url('hermano/elimina/' . $l->idHermano), 'Eliminar') ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

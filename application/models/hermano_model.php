@@ -12,7 +12,7 @@ class Hermano_model extends CI_Model {
 
     public function lista($criterios = NULL) {
         if (!is_null($criterios)) {
-            $this->db->where($criterios);            
+            $this->db->where($criterios);
         }
         $consulta = $this->db->get('hermano');
         return $consulta->result();
@@ -33,21 +33,37 @@ class Hermano_model extends CI_Model {
     }
 
     public function elimina($idHermano) {
+        $this->load->model('pago_model');
+        $pagos = $this->pago_model->lista(['hermano.idHermano = ' => $idHermano]);
+
+        foreach ($pagos as $p) {
+            $this->db->where('idHermano', $idHermano);
+            $this->db->where('idRemesa', $p->idRemesa);
+            $this->db->delete('pago');
+            $this->db->where('idCuota', $p->idCuota);
+            $this->db->delete('cuota');
+        }
+            $this->db->where('idHermano', $idHermano);
+            $this->db->delete('hermano');
+        
         
     }
-    
+
     public function listarTipoPago() {
         $this->load->helper('bd');
         return obtenerEnumerados('hermano', 'tipo');
     }
+
     public function listarTratamiento() {
         $this->load->helper('bd');
         return obtenerEnumerados('hermano', 'tratamiento');
     }
+
     public function listarTipoVia() {
         $this->load->helper('bd');
         return obtenerEnumerados('hermano', 'tipo_via');
     }
+
     public function listarFamilia() {
         $this->load->helper('bd');
         return obtenerEnumerados('hermano', 'familia');

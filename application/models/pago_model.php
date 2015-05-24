@@ -9,12 +9,15 @@ if (!defined('BASEPATH'))
  * @author Sara Alamillo Arroyo
  */
 class Pago_model extends CI_Model {
-    public function lista(){
+    public function lista($criterios = NULL){
         $this->db->select('remesa.*, cuota.*, hermano.idHermano, hermano.nombre, hermano.apellido1, hermano.apellido2');
         $this->db->from('remesa');
         $this->db->join('pago', 'remesa.idRemesa = pago.idRemesa');
         $this->db->join('cuota', 'pago.idCuota = cuota.idCuota');
         $this->db->join('hermano', 'hermano.idHermano = pago.idHermano');
+        if (!is_null($criterios)) {
+            $this->db->where($criterios);
+        }
         $consulta = $this->db->get();
         return $consulta->result();
     }

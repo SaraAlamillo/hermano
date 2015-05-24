@@ -109,8 +109,9 @@ class Hermano extends CI_Controller {
         }
     }
 
-    public function elimina() {
-        
+    public function elimina($idHermano) {
+        $this->hermano_model->elimina($idHermano);
+         redirect(site_url("hermano"));
     }
 
 }
