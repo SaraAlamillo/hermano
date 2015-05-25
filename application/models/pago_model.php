@@ -21,8 +21,6 @@ class Pago_model extends CI_Model {
         $consulta = $this->db->get();
         return $consulta->result();
     }
-    public function listaUno(){       
-    }
     public function agrega($datos){
         $this->db->insert('pago', $datos);
     }
