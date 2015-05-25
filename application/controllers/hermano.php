@@ -116,9 +116,8 @@ class Hermano extends CI_Controller {
 
     public function medallas() {
         if ($this->input->post()) {
-            echo '<pre>';
-            print_r($this->input->post('hermanos'));
-            echo '</pre>';
+            $this->load->library('sorteo', $this->input->post());
+            // TODO: Aquí
         } else {
             $parametros = [
                 'listado' => $this->hermano_model->lista(['medalla = ' => 0])
