@@ -22,11 +22,26 @@ class Vivienda_model extends CI_Model {
         $consulta = $this->db->get('vivienda');
         return $consulta->result();
     }
-    
+
     public function listarUno($idVivienda) {
         $this->db->where('idVivienda', $idVivienda);
         $consulta = $this->db->get('vivienda');
         return $consulta->row();
+    }
+
+    public function listarBarriada() {
+        $this->load->helper('bd');
+        return obtenerEnumerados('vivienda', 'Barriada');
+    }
+
+    public function listarLinea() {
+        $this->load->helper('bd');
+        return obtenerEnumerados('vivienda', 'Linea');
+    }
+
+    public function listarNumero() {
+        $this->load->helper('bd');
+        return obtenerEnumerados('vivienda', 'Numero');
     }
 
 }

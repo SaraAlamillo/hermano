@@ -8,9 +8,9 @@
     <body>
         <?= anchor(site_url('vivienda'), 'Volver al listado') ?>
         <form action="" method="POST">
-            Barriada: <input type="text" name="Barriada" /><br />
-            Línea: <input type="text" name="Linea" /><br />
-            Número: <input type="text" name="Numero" /><br />
+            Barriada: <?=  crearDesplegable('Barriada', $lisBarriada, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?><br />
+            Línea: <?=  crearDesplegable('Linea', $lisLinea, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?><br />
+            Número: <?=  crearDesplegable('Numero', $lisNumero, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?><br />
             Observaciones : <textarea name="Observaciones"></textarea><br />
             <input type="submit" value="Añadir" />
         </form>

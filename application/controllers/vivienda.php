@@ -25,7 +25,7 @@ class Vivienda extends CI_Controller {
 
     public function cambio($idVivienda) {
         if ($this->input->post()) {
-           $this->vivienda_model->cambio($idVivienda, $this->input->post('Observaciones'));
+            $this->vivienda_model->cambio($idVivienda, $this->input->post('Observaciones'));
             $this->session->set_flashdata("mensaje", 'Se han realizado las cambios correctamente');
             redirect(site_url("vivienda"));
         } else {
@@ -36,14 +36,22 @@ class Vivienda extends CI_Controller {
             $this->load->view('vivienda/cambio', $parametros);
         }
     }
-    
+
     public function nueva() {
         if ($this->input->post()) {
-           $this->vivienda_model->alta($this->input->post());
+            $this->vivienda_model->alta($this->input->post());
             $this->session->set_flashdata("mensaje", 'Se ha añadido la vivienda correctamente');
             redirect(site_url("vivienda"));
         } else {
-            $this->load->view('vivienda/nueva');
+            $this->load->helper('form');
+            
+            $parametros = [
+                'lisBarriada' => $this->vivienda_model->listarBarriada(),
+                'lisLinea' => $this->vivienda_model->listarLinea(),
+                'lisNumero' => $this->vivienda_model->listarNumero()
+            ];
+            
+            $this->load->view('vivienda/nueva', $parametros);
         }
     }
 
