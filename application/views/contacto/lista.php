@@ -16,7 +16,6 @@
                 <td>Nombre</td>
                 <td>Primer apellido</td>
                 <td>Segundo apellido</td>
-                <td>CIF</td>
                 <td>Teléfono móvil</td>
                 <td>Teléfono fijo</td>
                 <td>Acciones</td>
@@ -27,7 +26,6 @@
                     <td><?= $l->nombre ?></td>
                     <td><?= $l->apellido1 ?></td>
                     <td><?= $l->apellido2 ?></td>
-                    <td><?= $l->cif ?></td>
                     <td><?= $l->movil ?></td>
                     <td><?= $l->fijo ?></td>
                     <td>
