@@ -21,6 +21,7 @@
                     <td><?= $l->descripcion ?></td>
                     <td>
                         <?= anchor(site_url('remesa/cambiar/' . $l->idRemesa), 'Modificar') ?>
+                        <?= anchor(site_url('remesa/elimina/' . $l->idRemesa), 'Eliminar') ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

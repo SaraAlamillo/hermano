@@ -30,7 +30,7 @@ class Contacto extends CI_Controller {
             redirect(site_url("contacto"));
         } else {
             $this->load->model('provincia_model');
-            
+
             $parametros = [
                 'lisTratamiento' => $this->contacto_model->listarTratamiento(),
                 'lisTipoVia' => $this->contacto_model->listarTipoVia(),
@@ -38,7 +38,7 @@ class Contacto extends CI_Controller {
                 'lisProvincia' => $this->provincia_model->listar(),
                 'contacto' => $this->contacto_model->listarUno($idContacto)
             ];
-            
+
             $this->load->helper('form');
 
             $this->load->view('contacto/cambio', $parametros);
@@ -59,9 +59,9 @@ class Contacto extends CI_Controller {
                 'lisTipo' => $this->contacto_model->listaTipo(),
                 'lisProvincia' => $this->provincia_model->listar()
             ];
-            
+
             $this->load->helper('form');
-            
+
             $this->load->view('contacto/nueva', $parametros);
         }
     }
@@ -80,20 +80,20 @@ class Contacto extends CI_Controller {
     }
 
     public function eliminar($idContacto) {
-		if ($this->input->post()) {
-				if ($this->input->post('eliminar') == 'Si') {
-					$this->contacto_model->elimina($idContacto);
-            $this->session->set_flashdata("mensaje", 'Se ha eliminado el contacto correctamente');
-            redirect(site_url("contacto"));
-				} else {
-					redirect(site_url("contacto"));
-				}
-			} else {
-				$parametros = [
-				'datos' => $this->contacto_model->listaUno($idContacto)
-				];
-				$this->load->view('confirmar_eliminacion', $parametros);
-			}
+        if ($this->input->post()) {
+            if ($this->input->post('eliminar') == 'Si') {
+                $this->contacto_model->eliminar($idContacto);
+                $this->session->set_flashdata("mensaje", 'Se ha eliminado el contacto correctamente');
+                redirect(site_url("contacto"));
+            } else {
+                redirect(site_url("contacto"));
+            }
+        } else {
+            $parametros = [
+                'datos' => $this->contacto_model->listarUno($idContacto)
+            ];
+            $this->load->view('confirmar_eliminacion', $parametros);
+        }
     }
 
 }

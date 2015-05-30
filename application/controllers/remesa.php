@@ -45,27 +45,27 @@ class Remesa extends CI_Controller {
             $this->load->view('remesa/cambio', $parametros);
         }
     }
-	
-	public function elimina($idRemesa) {
-		if ($this->remesa_model->tieneCuotas($idRemesa)) {
-            $this->session->set_flashdata("mensaje", 'No se puede eliminar una remesa con cuotas');
+
+    public function elimina($idRemesa) {
+        if ($this->remesa_model->tieneCuotas($idRemesa)) {
+            $this->session->set_flashdata("mensaje", 'No se puede eliminar una remesa con cuotas asociadas');
             redirect(site_url("remesa"));
-		} else {
-			if ($this->input->post()) {
-				if ($this->input->post('eliminar') == 'Si') {
-					$this->remesa_model->elimina($idRemesa);
-            $this->session->set_flashdata("mensaje", 'Se ha eliminado la remesa correctamente');
-            redirect(site_url("remesa"));
-				} else {
-					redirect(site_url("remesa"));
-				}
-			} else {
-				$parametros = [
-				'datos' => $this->remesa_model->listaUno($idRemesa)
-				];
-				$this->load->view('confirmar_eliminacion', $parametros);
-			}
-		}
-	}
+        } else {
+            if ($this->input->post()) {
+                if ($this->input->post('eliminar') == 'Si') {
+                    $this->remesa_model->elimina($idRemesa);
+                    $this->session->set_flashdata("mensaje", 'Se ha eliminado la remesa correctamente');
+                    redirect(site_url("remesa"));
+                } else {
+                    redirect(site_url("remesa"));
+                }
+            } else {
+                $parametros = [
+                    'datos' => $this->remesa_model->listaUno($idRemesa)
+                ];
+                $this->load->view('confirmar_eliminacion', $parametros);
+            }
+        }
+    }
+
 }
-    
