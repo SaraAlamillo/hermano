@@ -12,22 +12,13 @@ class Pago extends CI_Controller {
     
     public function lista($idHermano) {
         $parametros = [
-            'listado' => $this->pago_model->lista(['hermano.idHermano = ' => $idHermano]),
-            "mensaje" => $this->session->flashdata("mensaje")
+            'listado' => $this->pago_model->lista(['hermano.idHermano = ' => $idHermano])
         ];
         
         $this->load->view('pago/lista', $parametros);
     }
     
-    public function nuevo(){
-        
-    }
-    
-    public function cambio($idHermano, $idRemesa, $idCuota){
-        
-    }
-    
-    public function elimina($idHermano, $idRemesa, $idCuota){
+    public function registra(){
         
     }
 }
