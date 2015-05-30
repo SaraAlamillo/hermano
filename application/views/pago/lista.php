@@ -22,8 +22,16 @@
                 <tr>
                     <td><?= $l->anio ?></td>
                     <td><?= $l->descripcion ?></td>
+                    <?php if (empty($l->plazo1)): ?>
+                    <td>NO PAGADO</td>
+                    <?php else: ?>
                     <td><?= $l->plazo1 ?></td>
+                    <?php endif; ?>
+                    <?php if (empty($l->plazo2)): ?>
+                    <td>NO PAGADO</td>
+                    <?php else: ?>
                     <td><?= $l->plazo2 ?></td>
+                    <?php endif; ?>
                     <td>
                         <?= anchor(site_url('pago/cambio/' . $l->idHermano . '/' . $l->idRemesa . '/' . $l->idCuota), 'Modificar') ?>
                         <?= anchor(site_url('pago/elimina/' . $l->idHermano . '/' . $l->idRemesa . '/' . $l->idCuota), 'Eliminar') ?>

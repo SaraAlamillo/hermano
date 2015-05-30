@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Hermano extends CI_Controller {
+class Pago extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -12,7 +12,8 @@ class Hermano extends CI_Controller {
     
     public function lista($idHermano) {
         $parametros = [
-            'listado' => $this->pago_model->lista(['idHermano = ' => $idHermano])
+            'listado' => $this->pago_model->lista(['hermano.idHermano = ' => $idHermano]),
+            "mensaje" => $this->session->flashdata("mensaje")
         ];
         
         $this->load->view('pago/lista', $parametros);
