@@ -46,6 +46,16 @@ class Hermano_model extends CI_Model {
             $this->db->where('idHermano', $idHermano);
             $this->db->delete('hermano');
         
+		$this->db->select_max('idHermano');
+		$consulta = $this->db->get('hermano');
+		$consulta = $consulta->row();
+		$idMax = $consulta->XX;
+		
+		for ($i = $idHermano ; $i < $idMax ; $i++) {
+			$this->db->update('hermano', ['idHermano' => $i], ['idHermano' => ($i + 1)]);
+		}
+		
+		$this->db->query->('ALTER TABLE hermano AUTO_INCREMENT = ' + $idMax);
         
     }
 

@@ -80,8 +80,20 @@ class Contacto extends CI_Controller {
     }
 
     public function eliminar($idContacto) {
-        $this->contacto_model->eliminar($idContacto);
+		if ($this->input->post()) {
+				if ($this->input->post('eliminar') == 'Si') {
+					$this->contacto_model->elimina($idContacto);
+            $this->session->set_flashdata("mensaje", 'Se ha eliminado el contacto correctamente');
             redirect(site_url("contacto"));
+				} else {
+					redirect(site_url("contacto"));
+				}
+			} else {
+				$parametros = [
+				'datos' => $this->contacto_model->listaUno($idContacto)
+				];
+				$this->load->view('confirmar_eliminacion', $parametros);
+			}
     }
 
 }
