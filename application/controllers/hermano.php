@@ -110,20 +110,21 @@ class Hermano extends CI_Controller {
     }
 
     public function elimina($idHermano) {
-		if ($this->input->post()) {
-				if ($this->input->post('eliminar') == 'Si') {
-					$this->hermano_model->elimina($idRemesa);
-            $this->session->set_flashdata("mensaje", 'Se ha eliminado el hermano correctamente');
-            redirect(site_url("hermano"));
-				} else {
-					redirect(site_url("hermano"));
-				}
-			} else {
-				$parametros = [
-				'datos' => $this->hermano_model->listaUno($idHermano)
-				];
-				$this->load->view('confirmar_eliminacion', $parametros);
-			}
+        if ($this->input->post()) {
+            if ($this->input->post('eliminar') == 'Si') {
+                echo $this->hermano_model->elimina($idHermano);
+                $this->session->set_flashdata("mensaje", 'Se ha eliminado el hermano correctamente');
+                redirect(site_url("hermano"));
+            } else {
+                redirect(site_url("hermano"));
+            }
+        } else {
+            $parametros = [
+                'datos' => $this->hermano_model->listaUno($idHermano)
+            ];
+            $this->load->view('confirmar_eliminacion', $parametros);
+        }
+        
     }
 
     public function medallas() {
@@ -134,7 +135,7 @@ class Hermano extends CI_Controller {
             $parametros = [
                 'listado' => $this->hermano_model->lista(['medalla = ' => 0])
             ];
-            
+
             $this->load->view('hermano/sorteo', $parametros);
         }
     }

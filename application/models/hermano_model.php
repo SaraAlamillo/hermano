@@ -33,6 +33,8 @@ class Hermano_model extends CI_Model {
     }
 
     public function elimina($idHermano) {
+        $this->recopilarImpagos($idHermano);
+
         $this->load->model('pago_model');
         $pagos = $this->pago_model->lista(['hermano.idHermano = ' => $idHermano]);
 
@@ -43,20 +45,62 @@ class Hermano_model extends CI_Model {
             $this->db->where('idCuota', $p->idCuota);
             $this->db->delete('cuota');
         }
-            $this->db->where('idHermano', $idHermano);
-            $this->db->delete('hermano');
+        $this->db->where('idHermano', $idHermano);
+        $this->db->delete('hermano');
+
+        $this->db->select_max('idHermano');
+        $consulta = $this->db->get('hermano');
+        $consulta = $consulta->row();
+        $idMax = $consulta->idHermano;
+
+        for ($i = $idHermano; $i < $idMax; $i++) {
+            $this->db->update('hermano', ['idHermano' => $i], ['idHermano' => ($i + 1)]);
+        }
+
+        $this->db->query('ALTER TABLE hermano AUTO_INCREMENT = ' . $idMax);
+    }
+
+    public function recopilarImpagos($idHermano) {
+        $datosHermano = $this->listaUno($idHermano);
+
+        $this->db->from('pago');
+        $this->db->join('cuota', 'pago.idCuota = cuota.idCuota');
+        $this->db->where("idHermano = $idHermano and (plazo1 is null or plazo2 is null)");
+        $datosPago = $this->db->get();
+
+        $impagos = "";
+
+        foreach ($datosPago->result() as $d) {
+            $plazos = "";
+
+            if (empty($d->plazo1)) {
+                $plazos = "Plazo 1";
+            }
+
+            if (empty($d->plazo2)) {
+                if ($plazos != "") {
+                    $plazos .= " y plazo 2";
+                } else {
+                    $plazos = "Plazo 2";
+                }
+            }
+
+            if ($plazos != "") {
+                $impagos .= "Remesa {$d->idRemesa}: $plazos\n";
+            }
+        }
         
-		$this->db->select_max('idHermano');
-		$consulta = $this->db->get('hermano');
-		$consulta = $consulta->row();
-		$idMax = $consulta->XX;
-		
-		for ($i = $idHermano ; $i < $idMax ; $i++) {
-			$this->db->update('hermano', ['idHermano' => $i], ['idHermano' => ($i + 1)]);
-		}
-		
-		$this->db->query->('ALTER TABLE hermano AUTO_INCREMENT = ' + $idMax);
-        
+        if ($impagos != "") {
+            $datosBaja = [
+                'nombre' => $datosHermano->nombre,
+                'apellido1' => $datosHermano->apellido1,
+                'apellido2' => $datosHermano->apellido2,
+                'dni' => $datosHermano->dni,
+                'pendiente' => $impagos
+            ];
+
+            $this->db->insert('baja', $datosBaja);
+        }
     }
 
     public function listarTipoPago() {
