@@ -9,16 +9,17 @@ class Pago extends CI_Controller {
         parent::__construct();
         $this->load->model('pago_model');
     }
-    
+
     public function lista($idHermano) {
         $parametros = [
             'listado' => $this->pago_model->lista(['hermano.idHermano = ' => $idHermano])
         ];
-        
+
         $this->load->view('pago/lista', $parametros);
     }
-    
-    public function registra(){
+
+    public function registra() {
         
     }
+
 }

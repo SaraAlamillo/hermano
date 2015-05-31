@@ -57,13 +57,14 @@ class Contacto_model extends CI_Model {
         $this->load->helper('bd');
         return obtenerEnumerados('contacto', 'tipo_via');
     }
-    
+
     public function nombreTipo($id) {
         $this->db->where('idTipo_Contacto', $id);
         $consulta = $this->db->get('Tipo_Contacto');
         $resultado = $consulta->row();
         return $resultado->tipo;
     }
+
     public function eliminar($id) {
         $this->db->where('idContacto', $id);
         $this->db->delete('contacto');

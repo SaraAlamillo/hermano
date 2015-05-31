@@ -18,14 +18,14 @@
                     <td><?= $l->anio ?></td>
                     <td><?= $l->descripcion ?></td>
                     <?php if (empty($l->plazo1)): ?>
-                    <td>NO PAGADO</td>
+                        <td>NO PAGADO</td>
                     <?php else: ?>
-                    <td><?= $l->plazo1 ?></td>
+                        <td><?= $l->plazo1 ?></td>
                     <?php endif; ?>
                     <?php if (empty($l->plazo2)): ?>
-                    <td>NO PAGADO</td>
+                        <td>NO PAGADO</td>
                     <?php else: ?>
-                    <td><?= $l->plazo2 ?></td>
+                        <td><?= $l->plazo2 ?></td>
                     <?php endif; ?>
                     </td>
                 </tr>

@@ -39,15 +39,15 @@ if (!function_exists('crearListaRadio')) {
 
     function crearListaRadio($nombre, array $valores, $porDefecto = NULL, $camposDatos = ['desc' => 'nombre', 'valor' => 'id']) {
         $html = "";
-        
+
         foreach ($valores as $v) {
             if ($porDefecto == $v[$camposDatos['valor']]) {
-            $html .= "<input type='radio' name='$nombre' value='{$v[$camposDatos['valor']]}' checked=checked />{$v[$camposDatos['desc']]} \n";
+                $html .= "<input type='radio' name='$nombre' value='{$v[$camposDatos['valor']]}' checked=checked />{$v[$camposDatos['desc']]} \n";
             } else {
-            $html .= "<input type='radio' name='$nombre' value='{$v[$camposDatos['valor']]}' />{$v[$camposDatos['desc']]} \n";
+                $html .= "<input type='radio' name='$nombre' value='{$v[$camposDatos['valor']]}' />{$v[$camposDatos['desc']]} \n";
             }
-        }    
-        
+        }
+
         return $html;
     }
 

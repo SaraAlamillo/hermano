@@ -8,11 +8,11 @@
     <body>
         <?= anchor(site_url('vivienda'), 'Volver al listado') ?>
         <form action="" method="POST">
-            Barriada: <input type="text" value="<?=$vivienda->Barriada ?>" readonly="readonly" /><br />
-            Línea: <input type="text" value="<?=$vivienda->Linea ?>" readonly="readonly" /><br />
-            Número: <input type="text" value="<?=$vivienda->Numero ?>" readonly="readonly" /><br />
-            Observaciones : <textarea name="Observaciones"><?=$vivienda->Observaciones ?></textarea><br />
-            <input type="hidden" value="<?=$vivienda->idVivienda ?>" name="idVivienda" />
+            Barriada: <input type="text" value="<?= $vivienda->Barriada ?>" readonly="readonly" /><br />
+            Línea: <input type="text" value="<?= $vivienda->Linea ?>" readonly="readonly" /><br />
+            Número: <input type="text" value="<?= $vivienda->Numero ?>" readonly="readonly" /><br />
+            Observaciones : <textarea name="Observaciones"><?= $vivienda->Observaciones ?></textarea><br />
+            <input type="hidden" value="<?= $vivienda->idVivienda ?>" name="idVivienda" />
             <input type="submit" value="Modificar" />
         </form>
     </body>

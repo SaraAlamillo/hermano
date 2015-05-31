@@ -124,7 +124,6 @@ class Hermano extends CI_Controller {
             ];
             $this->load->view('confirmar_eliminacion', $parametros);
         }
-        
     }
 
     public function medallas() {

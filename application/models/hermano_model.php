@@ -89,7 +89,7 @@ class Hermano_model extends CI_Model {
                 $impagos .= "Remesa {$d->idRemesa}: $plazos\n";
             }
         }
-        
+
         if ($impagos != "") {
             $datosBaja = [
                 'nombre' => $datosHermano->nombre,

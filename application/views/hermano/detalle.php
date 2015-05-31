@@ -9,9 +9,9 @@
         <?= anchor(site_url('hermano'), 'Volver al listado') ?>
         <p>Vivienda: </p>
         <ul>
-            <li>Barriada: <?=$hermano->vivienda->Barriada ?></li>
-            <li>Número: <?=$hermano->vivienda->Numero ?></li>
-            <li>Línea: <?=$hermano->vivienda->Linea ?></li>
+            <li>Barriada: <?= $hermano->vivienda->Barriada ?></li>
+            <li>Número: <?= $hermano->vivienda->Numero ?></li>
+            <li>Línea: <?= $hermano->vivienda->Linea ?></li>
         </ul>
         <p>Tratamiento: <?= $hermano->tratamiento ?></p>
         <p>Nombre: <?= $hermano->nombre ?></p>

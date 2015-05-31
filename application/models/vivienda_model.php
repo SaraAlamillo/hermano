@@ -19,9 +19,9 @@ class Vivienda_model extends CI_Model {
     }
 
     function listarTodo($criterios = NULL) {
-		if (! is_null($criterios)) {
-			$this->db->where($criterios);
-		}
+        if (!is_null($criterios)) {
+            $this->db->where($criterios);
+        }
         $consulta = $this->db->get('vivienda');
         return $consulta->result();
     }
@@ -31,16 +31,16 @@ class Vivienda_model extends CI_Model {
         $consulta = $this->db->get('vivienda');
         return $consulta->row();
     }
-	
-	public function existe($barriada, $linea, $numero) {
-		$viviendas = $this->listarTodo(['Barriada' => $barriada, 'Linea' => $linea, 'Numero' => $numero]);
-		
-		if (count($viviendas) > 0) {
-			return TRUE;
-		} else {
-			return FALSE;
-		}
-	}
+
+    public function existe($barriada, $linea, $numero) {
+        $viviendas = $this->listarTodo(['Barriada' => $barriada, 'Linea' => $linea, 'Numero' => $numero]);
+
+        if (count($viviendas) > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 
     public function listarBarriada() {
         $this->load->helper('bd');

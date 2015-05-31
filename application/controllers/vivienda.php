@@ -44,13 +44,13 @@ class Vivienda extends CI_Controller {
             redirect(site_url("vivienda"));
         } else {
             $this->load->helper('form');
-            
+
             $parametros = [
                 'lisBarriada' => $this->vivienda_model->listarBarriada(),
                 'lisLinea' => $this->vivienda_model->listarLinea(),
                 'lisNumero' => $this->vivienda_model->listarNumero()
             ];
-            
+
             $this->load->view('vivienda/nueva', $parametros);
         }
     }
