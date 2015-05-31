@@ -39,5 +39,23 @@ class Remesa_model extends CI_Model {
     public function elimina($idRemesa) {
         $this->db->delete('remesa', ['idRemesa' => $idRemesa]);
     }
+    
+    public function anios() {
+        $this->db->distinct();
+        $this->db->select('anio');
+        $this->db->order_by('anio', 'desc');
+        $consulta = $this->db->get('remesa');
+        
+        return $consulta->result();
+    }
+    
+    public function descripciones($anio) {
+        $this->db->select('descripcion, idRemesa');
+        $this->db->where('anio', $anio);
+        $this->db->order_by('anio', 'desc');
+        $consulta = $this->db->get('remesa');
+        
+        return $consulta->result();
+    }
 
 }

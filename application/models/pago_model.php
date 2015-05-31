@@ -27,12 +27,14 @@ class Pago_model extends CI_Model {
         $this->db->insert('pago', $datos);
     }
 
-    public function cambia() {
-        
-    }
-
-    public function elimina() {
-        
+    public function plazos($idHermano, $idRemesa) {
+        $this->db->select('cuota.plazo1, cuota.plazo2');
+        $this->db->from('pago');
+        $this->db->join('cuota', 'pago.idCuota = cuota.idCuota');
+        $this->db->where('idHermano = ', $idHermano);
+        $this->db->where('idRemesa = ', $idRemesa);
+        $consulta = $this->db->get();
+        return $consulta->row();
     }
 
 }
