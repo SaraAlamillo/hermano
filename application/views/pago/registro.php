@@ -17,8 +17,8 @@
         </fieldset>
         <fieldset>
             <legend>Plazos</legend>
-            <input type="text" name="plazo1" value="<?=$seleccionado['plazo1'] ?>" />
-            <input type="text" name="plazo2" value="<?=$seleccionado['plazo2'] ?>" />
+            <p>Plazo 1 <input type="text" name="plazo1" value="<?=$seleccionado['plazo1'] ?>" /></p>
+            <p>Plazo 2 <input type="text" name="plazo2" value="<?=$seleccionado['plazo2'] ?>" /></p>
         </fieldset>
         <input type="submit" value="Registrar" />
     </body>
