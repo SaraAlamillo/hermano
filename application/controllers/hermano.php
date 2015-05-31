@@ -126,10 +126,30 @@ class Hermano extends CI_Controller {
         }
     }
 
+    function GenerateWord() {
+        //Get a random word
+        $nb = rand(3, 10);
+        $w = '';
+        for ($i = 1; $i <= $nb; $i++) {
+            $w.=chr(rand(ord('a'), ord('z')));
+        }
+        return $w;
+    }
+
+    function GenerateSentence() {
+        //Get a random sentence
+        $nb = rand(1, 10);
+        $s = '';
+        for ($i = 1; $i <= $nb; $i++) {
+            $s.= $this->GenerateWord() . ' ';
+        }
+        return substr($s, 0, -1);
+    }
+
     public function medallas() {
         if ($this->input->post()) {
-            $this->load->library('sorteo', $this->input->post());
-            // TODO: Aquí
+            $this->load->library('sorteo');
+            $this->sorteo->generar($this->input->post('hermanos'));
         } else {
             $parametros = [
                 'listado' => $this->hermano_model->lista(['medalla = ' => 0])
