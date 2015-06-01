@@ -11,10 +11,9 @@ if (!defined('BASEPATH'))
 class Pago_model extends CI_Model {
 
     public function lista($criterios = NULL) {
-        $this->db->select('remesa.*, cuota.*, hermano.idHermano, hermano.nombre, hermano.apellido1, hermano.apellido2');
+        $this->db->select('remesa.*, pago.*, hermano.idHermano, hermano.nombre, hermano.apellido1, hermano.apellido2');
         $this->db->from('remesa');
         $this->db->join('pago', 'remesa.idRemesa = pago.idRemesa');
-        $this->db->join('cuota', 'pago.idCuota = cuota.idCuota');
         $this->db->join('hermano', 'hermano.idHermano = pago.idHermano');
         if (!is_null($criterios)) {
             $this->db->where($criterios);
@@ -28,9 +27,8 @@ class Pago_model extends CI_Model {
     }
 
     public function plazos($idHermano, $idRemesa) {
-        $this->db->select('cuota.plazo1, cuota.plazo2');
+        $this->db->select('cuota1, cuota2');
         $this->db->from('pago');
-        $this->db->join('cuota', 'pago.idCuota = cuota.idCuota');
         $this->db->where('idHermano = ', $idHermano);
         $this->db->where('idRemesa = ', $idRemesa);
         $consulta = $this->db->get();

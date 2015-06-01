@@ -11,9 +11,7 @@ class Constructor extends CI_Controller {
     }
 
     public function index() {
-        echo '<pre>';
-        print_r($this->constructor_model->obtenerCampos('cuota'));
-        echo '</pre>';
+        $this->constructor();
     }
 
     public function constructor() {
@@ -21,8 +19,8 @@ class Constructor extends CI_Controller {
             if (! is_null($this->input->post('hermano'))) {
                 $campos['hermano'] = implode(', ', $this->input->post('hermano'));
             }
-            if (! is_null($this->input->post('cuota'))) {
-                 $campos['cuota'] = implode(', ', $this->input->post('cuota'));
+            if (! is_null($this->input->post('pago'))) {
+                 $campos['pago'] = implode(', ', $this->input->post('pago'));
             }
             if (! is_null($this->input->post('remesa'))) {
                  $campos['remesa'] = implode(',', $this->input->post('remesa'));
@@ -39,7 +37,7 @@ class Constructor extends CI_Controller {
             $parametros = [
                 'campos' => [
                     'hermano' => $this->constructor_model->obtenerCampos('hermano'),
-                    'cuota' => $this->constructor_model->obtenerCampos('cuota'),
+                    'pago' => $this->constructor_model->obtenerCampos('pago'),
                     'remesa' => $this->constructor_model->obtenerCampos('remesa')
                 ]
             ];

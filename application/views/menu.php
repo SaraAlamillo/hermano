@@ -10,7 +10,7 @@
             <li><?= anchor(site_url('vivienda'), 'Viviendas') ?></li>
             <li><?= anchor(site_url('hermano'), 'Hermanos') ?></li>
             <li><?= anchor(site_url('remesa'), 'Remesas') ?></li>
-            <li><?= anchor('#', 'Constructor de consultas') ?></li>
+            <li><?= anchor(site_url('constructor'), 'Constructor de consultas') ?></li>
             <li><?= anchor(site_url('pago/registra'), 'Registro de pago') ?></li>
             <li><?= anchor(site_url('contacto'), 'Agenda de contactos') ?></li>
             <li><?= anchor(site_url('hermano/medallas'), 'Sorteo de medallas') ?></li>
