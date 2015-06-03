@@ -29,9 +29,9 @@ class Pago_model extends CI_Model {
     public function plazos($idHermano, $idRemesa) {
         $this->db->select('cuota1, cuota2');
         $this->db->from('pago');
-        $this->db->where('idHermano = ', $idHermano);
-        $this->db->where('idRemesa = ', $idRemesa);
+        $this->db->where(['idHermano' => $idHermano, 'idRemesa' => $idRemesa]);
         $consulta = $this->db->get();
+		
         return $consulta->row();
     }
 

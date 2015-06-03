@@ -7,14 +7,37 @@ class Remesa_model extends CI_Model {
 
     public function alta($datos) {
         $this->db->insert('remesa', $datos);
+
+        $idRemesa = $this->ultimaCreada();
+
+        $this->load->model('hermano_model');
+        $hermanos = $this->hermano_model->lista();
+
+        $this->load->model('pago_model');
+
+        foreach ($hermanos as $h) {
+            $this->pago_model->agrega(['idHermano' => $h->idHermano, 'idRemesa' => $idRemesa]);
+        }
+    }
+
+    public function ultimaCreada() {
+        $this->db->select_max('idRemesa');
+        $consulta = $this->db->get('remesa');
+        $resultado = $consulta->row();
+
+        return $resultado->idRemesa;
     }
 
     public function cambio($datos, $id) {
         $this->db->update('remesa', $datos, ['idRemesa' => $id]);
     }
 
-    public function listar() {
+    public function listar($criterios = NULL) {
+        if (!is_null($criterios)) {
+            $this->db->where($criterios);
+        }
         $consulta = $this->db->get('remesa');
+
         return $consulta->result();
     }
 
@@ -39,22 +62,22 @@ class Remesa_model extends CI_Model {
     public function elimina($idRemesa) {
         $this->db->delete('remesa', ['idRemesa' => $idRemesa]);
     }
-    
+
     public function anios() {
         $this->db->distinct();
         $this->db->select('anio');
         $this->db->order_by('anio', 'desc');
         $consulta = $this->db->get('remesa');
-        
+
         return $consulta->result();
     }
-    
+
     public function descripciones($anio) {
         $this->db->select('descripcion, idRemesa');
         $this->db->where('anio', $anio);
         $this->db->order_by('anio', 'desc');
         $consulta = $this->db->get('remesa');
-        
+
         return $consulta->result();
     }
 

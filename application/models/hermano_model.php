@@ -26,7 +26,26 @@ class Hermano_model extends CI_Model {
 
     public function agrega($datos) {
         $this->db->insert('hermano', $datos);
+		
+		$idHermano = $this->ultimoCreado();
+		
+		$this->load->model('remesa_model');
+		$remesas = $this->remesa_model->listar(['anio' => date('Y')]);
+		
+		$this->load->model('pago_model');
+		
+		foreach ($remesas as $r) {
+			$this->pago_model->agrega(['idHermano' => $idHermano, 'idRemesa' => $r->idRemesa]);
+		}
     }
+	
+	public function ultimoCreado() {
+		$this->db->select_max('idHermano');
+		$consulta = $this->db->get('hermano');
+		$resultado = $consulta->row();
+		
+		return $resultado->idHermano;
+	}
 
     public function cambia($idHermano, $datos) {
         $this->db->update('hermano', $datos, ['idHermano' => $idHermano]);

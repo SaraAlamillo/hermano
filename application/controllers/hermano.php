@@ -15,16 +15,10 @@ class Hermano extends CI_Controller {
     }
 
     public function lista() {
-        $this->load->model('vivienda_model');
-
         $parametros = [
             'listado' => $this->hermano_model->lista(),
             "mensaje" => $this->session->flashdata("mensaje")
         ];
-
-        foreach ($parametros['listado'] as &$l) {
-            $l->vivienda = $this->vivienda_model->listarUno($l->vivienda);
-        }
 
         $this->load->view('hermano/lista', $parametros);
     }
@@ -124,26 +118,6 @@ class Hermano extends CI_Controller {
             ];
             $this->load->view('confirmar_eliminacion', $parametros);
         }
-    }
-
-    function GenerateWord() {
-        //Get a random word
-        $nb = rand(3, 10);
-        $w = '';
-        for ($i = 1; $i <= $nb; $i++) {
-            $w.=chr(rand(ord('a'), ord('z')));
-        }
-        return $w;
-    }
-
-    function GenerateSentence() {
-        //Get a random sentence
-        $nb = rand(1, 10);
-        $s = '';
-        for ($i = 1; $i <= $nb; $i++) {
-            $s.= $this->GenerateWord() . ' ';
-        }
-        return substr($s, 0, -1);
     }
 
     public function medallas() {
