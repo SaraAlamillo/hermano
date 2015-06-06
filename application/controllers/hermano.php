@@ -37,7 +37,9 @@ class Hermano extends CI_Controller {
 
     public function cambio($idHermano) {
         if ($this->input->post()) {
-            $this->hermano_model->cambia($idHermano, $this->input->post());
+            $this->load->helper('datos');
+            
+            $this->hermano_model->cambia($idHermano, quitaDatoVacio($this->input->post()));
             $this->session->set_flashdata("mensaje", 'Se han realizado las cambios correctamente');
             redirect(site_url("hermano"));
         } else {
@@ -71,8 +73,10 @@ class Hermano extends CI_Controller {
 
     public function nuevo() {
         if ($this->input->post()) {
-            $this->hermano_model->agrega($this->input->post());
-            $this->session->set_flashdata("mensaje", 'Se ha añadido la vivienda correctamente');
+            $this->load->helper('datos');
+            
+            $this->hermano_model->agrega(quitaDatoVacio($this->input->post()));
+            $this->session->set_flashdata("mensaje", 'Se ha añadido el hermano correctamente');
             redirect(site_url("hermano"));
         } else {
             $this->load->model('vivienda_model');
