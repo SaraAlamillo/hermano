@@ -15,6 +15,8 @@ class Constructor extends CI_Controller {
     }
 
     public function constructor() {
+            $this->load->helper('bd');
+            
         if ($this->input->post()) {
             if (! is_null($this->input->post('hermano'))) {
                 $campos['hermano'] = implode(', ', $this->input->post('hermano'));

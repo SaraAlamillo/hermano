@@ -11,7 +11,7 @@
                 <fieldset>
                     <legend>Tabla de <?= $clave ?></legend>
                     <?php foreach ($valor as $v): ?>
-                        <input type="checkbox" name="<?= $clave ?>[]" value="<?= $clave . '.' . $v ?>" /> <?= $v ?> <br />
+                    <input type="checkbox" name="<?= $clave ?>[]" value="<?= $clave . '.' . $v ?>" /> <?= nombresCampos($v) ?> <br />
                     <?php endforeach; ?>
                 </fieldset>
             <?php endforeach; ?>
