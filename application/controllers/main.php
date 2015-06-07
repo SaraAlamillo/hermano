@@ -9,4 +9,13 @@ class Main extends CI_Controller {
         $this->load->view('menu');
     }
 
+    public function vista($contenido, $seccionActiva) {
+        $parametros = [
+            'contenido' => $contenido,
+            'activo' => $seccionActiva
+        ];
+        
+        $this->load->view('plantilla', $parametros);
+    }
+
 }

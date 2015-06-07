@@ -3,7 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Hermano extends CI_Controller {
+require_once __DIR__ . '/main.php';
+
+class Hermano extends Main {
 
     public function __construct() {
         parent::__construct();
@@ -20,7 +22,7 @@ class Hermano extends CI_Controller {
             "mensaje" => $this->session->flashdata("mensaje")
         ];
 
-        $this->load->view('hermano/lista', $parametros);
+        $this->vista($this->load->view('hermano/lista', $parametros, TRUE), 'hermano');
     }
 
     public function detalle($idHermano) {
@@ -32,7 +34,7 @@ class Hermano extends CI_Controller {
 
         $parametros['hermano']->vivienda = $this->vivienda_model->listarUno($parametros['hermano']->vivienda);
 
-        $this->load->view('hermano/detalle', $parametros);
+        $this->vista($this->load->view('hermano/detalle', $parametros, TRUE), 'hermano');
     }
 
     public function cambio($idHermano) {
@@ -67,7 +69,7 @@ class Hermano extends CI_Controller {
 
             $this->load->helper('form');
 
-            $this->load->view('hermano/cambio', $parametros);
+            $this->vista($this->load->view('hermano/cambio', $parametros, TRUE), 'hermano');
         }
     }
 
@@ -103,7 +105,7 @@ class Hermano extends CI_Controller {
 
             $this->load->helper('form');
 
-            $this->load->view('hermano/nueva', $parametros);
+            $this->vista($this->load->view('hermano/nueva', $parametros, TRUE), 'hermano');
         }
     }
 
@@ -120,7 +122,7 @@ class Hermano extends CI_Controller {
             $parametros = [
                 'datos' => $this->hermano_model->listaUno($idHermano)
             ];
-            $this->load->view('confirmar_eliminacion', $parametros);
+            $this->vista($this->load->view('confirmar_eliminacion', $parametros, TRUE), 'hermano');
         }
     }
 
@@ -133,7 +135,7 @@ class Hermano extends CI_Controller {
                 'listado' => $this->hermano_model->lista(['medalla = ' => 0])
             ];
 
-            $this->load->view('hermano/sorteo', $parametros);
+            $this->vista($this->load->view('hermano/sorteo', $parametros, TRUE), 'medalla');
         }
     }
 

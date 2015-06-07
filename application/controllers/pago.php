@@ -3,7 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Pago extends CI_Controller {
+require_once __DIR__ . '/main.php';
+
+class Pago extends Main {
 
     public function __construct() {
         parent::__construct();
@@ -15,7 +17,7 @@ class Pago extends CI_Controller {
             'listado' => $this->pago_model->lista(['hermano.idHermano = ' => $idHermano])
         ];
 
-        $this->load->view('pago/lista', $parametros);
+        $this->vista($this->load->view('pago/lista', $parametros, TRUE), 'hermano');
     }
 
     public function registra($hermano = NULL, $anio = NULL, $descripcion = NULL) {
@@ -66,7 +68,7 @@ echo '</pre>';
 
             $this->load->helper('form');
 
-            $this->load->view('pago/registro', $parametros);
+            $this->vista($this->load->view('pago/registro', $parametros, TRUE), 'registro');
         }*/
     }
 

@@ -3,7 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Contacto extends CI_Controller {
+require_once __DIR__ . '/main.php';
+
+class Contacto extends Main {
 
     public function __construct() {
         parent::__construct();
@@ -20,7 +22,7 @@ class Contacto extends CI_Controller {
             "mensaje" => $this->session->flashdata("mensaje")
         ];
 
-        $this->load->view('contacto/lista', $parametros);
+        $this->vista($this->load->view('contacto/lista', $parametros, TRUE), 'contacto');
     }
 
     public function cambio($idContacto) {
@@ -43,7 +45,7 @@ class Contacto extends CI_Controller {
 
             $this->load->helper('form');
 
-            $this->load->view('contacto/cambio', $parametros);
+            $this->vista($this->load->view('contacto/cambio', $parametros, TRUE), 'contacto');
         }
     }
 
@@ -66,7 +68,7 @@ class Contacto extends CI_Controller {
 
             $this->load->helper('form');
 
-            $this->load->view('contacto/nueva', $parametros);
+            $this->vista($this->load->view('contacto/nueva', $parametros, TRUE), 'contacto');
         }
     }
 
@@ -80,7 +82,7 @@ class Contacto extends CI_Controller {
         $parametros['contacto']->tipo = $this->contacto_model->nombreTipo($parametros['contacto']->tipo);
         $parametros['contacto']->provincia = $this->provincia_model->getNombre($parametros['contacto']->provincia);
 
-        $this->load->view('contacto/detalle', $parametros);
+        $this->vista($this->load->view('contacto/detalle', $parametros, TRUE), 'contacto');
     }
 
     public function eliminar($idContacto) {
@@ -96,7 +98,7 @@ class Contacto extends CI_Controller {
             $parametros = [
                 'datos' => $this->contacto_model->listarUno($idContacto)
             ];
-            $this->load->view('confirmar_eliminacion', $parametros);
+            $this->vista($this->load->view('confirmar_eliminacion', $parametros, TRUE), 'contacto');
         }
     }
 

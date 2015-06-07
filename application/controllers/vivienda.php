@@ -3,7 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Vivienda extends CI_Controller {
+require_once __DIR__ . '/main.php';
+
+class Vivienda extends Main {
 
     public function __construct() {
         parent::__construct();
@@ -20,7 +22,7 @@ class Vivienda extends CI_Controller {
             "mensaje" => $this->session->flashdata("mensaje")
         ];
 
-        $this->load->view('vivienda/lista', $parametros);
+        $this->vista($this->load->view('vivienda/lista', $parametros, TRUE), 'vivienda');
     }
 
     public function cambio($idVivienda) {
@@ -33,7 +35,7 @@ class Vivienda extends CI_Controller {
                 'vivienda' => $this->vivienda_model->listarUno($idVivienda)
             ];
 
-            $this->load->view('vivienda/cambio', $parametros);
+            $this->vista($this->load->view('vivienda/cambio', $parametros, TRUE), 'vivienda');
         }
     }
 
@@ -51,7 +53,7 @@ class Vivienda extends CI_Controller {
                 'lisNumero' => $this->vivienda_model->listarNumero()
             ];
 
-            $this->load->view('vivienda/nueva', $parametros);
+            $this->vista($this->load->view('vivienda/nueva', $parametros, TRUE), 'vivienda');
         }
     }
 

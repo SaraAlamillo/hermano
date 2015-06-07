@@ -3,7 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Constructor extends CI_Controller {
+require_once __DIR__ . '/main.php';
+
+class Constructor extends Main {
 
     public function __construct() {
         parent::__construct();
@@ -34,7 +36,7 @@ class Constructor extends CI_Controller {
                 'resultado' => $this->constructor_model->consulta($campos)
             ];
 
-            $this->load->view('constructor/resultados', $parametros);
+            $this->vista($this->load->view('constructor/resultados', $parametros, TRUE), 'constructor');
         } else {
             $parametros = [
                 'campos' => [
@@ -44,7 +46,7 @@ class Constructor extends CI_Controller {
                 ]
             ];
 
-            $this->load->view('constructor/constructor', $parametros);
+            $this->vista($this->load->view('constructor/constructor', $parametros, TRUE), 'constructor');
         }
     }
 

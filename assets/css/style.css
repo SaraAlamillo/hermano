@@ -1354,7 +1354,7 @@ ul.depth li:before {
     margin: 0 30px 30px;
     padding: 30px;
     background: #fff;
-    max-width: 780px;
+    //max-width: 780px;
     overflow: hidden;
 }
 

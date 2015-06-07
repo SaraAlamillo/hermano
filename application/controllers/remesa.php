@@ -3,7 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Remesa extends CI_Controller {
+require_once __DIR__ . '/main.php';
+
+class Remesa extends Main {
 
     public function __construct() {
         parent::__construct();
@@ -20,7 +22,7 @@ class Remesa extends CI_Controller {
             "mensaje" => $this->session->flashdata("mensaje")
         ];
 
-        $this->load->view('remesa/lista', $parametros);
+        $this->vista($this->load->view('remesa/lista', $parametros, TRUE), 'remesa');
     }
 
     public function insertar() {
@@ -29,7 +31,7 @@ class Remesa extends CI_Controller {
             $this->session->set_flashdata("mensaje", 'Se ha añadido la remesa correctamente');
             redirect(site_url("remesa"));
         } else {
-            $this->load->view('remesa/nueva');
+            $this->vista($this->load->view('remesa/nueva', NULL, TRUE), 'remesa');
         }
     }
 
@@ -42,7 +44,7 @@ class Remesa extends CI_Controller {
             $parametros = [
                 'remesa' => $this->remesa_model->listaUno($id)
             ];
-            $this->load->view('remesa/cambio', $parametros);
+            $this->vista($this->load->view('remesa/cambio', $parametros, TRUE), 'remesa');
         }
     }
 
@@ -63,7 +65,7 @@ class Remesa extends CI_Controller {
                 $parametros = [
                     'datos' => $this->remesa_model->listaUno($idRemesa)
                 ];
-                $this->load->view('confirmar_eliminacion', $parametros);
+                $this->vista($this->load->view('confirmar_eliminacion', $parametros, TRUE), 'remesa');
             }
         }
     }
