@@ -1444,7 +1444,8 @@ ul.depth li:before {
 #contact-form input[type="text"],
 #contact-form textarea,
 .comment-form input[type="text"],
-.comment-form textarea {
+.comment-form textarea,
+#contact-form select{
     color: #848484;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;

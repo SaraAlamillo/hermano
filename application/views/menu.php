@@ -21,7 +21,7 @@
                 <div class="portfolio-page">
                     <div class="portfolio-box">
 
-                        <div class="project-post web-design illustration">
+                        <div class="project-post">
                             <img alt="" src="<?= base_url() ?>assets/images/image6.jpg">
                             <div class="hover-box">
                                 <div class="project-title">
@@ -32,7 +32,7 @@
                             </div>
                         </div>
 
-                        <div class="project-post photography">
+                        <div class="project-post">
                             <img alt="" src="<?= base_url() ?>assets/images/image6.jpg">
                             <div class="hover-box">
                                 <div class="project-title">
@@ -43,7 +43,7 @@
                             </div>
                         </div>
 
-                        <div class="project-post web-design logo">
+                        <div class="project-post">
                             <img alt="" src="<?= base_url() ?>assets/images/image6.jpg">
                             <div class="hover-box">
                                 <div class="project-title">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="project-post photography illustration">
+                        <div class="project-post">
                             <img alt="" src="<?= base_url() ?>assets/images/image6.jpg">
                             <div class="hover-box">
                                 <div class="project-title">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
 
-                        <div class="project-post nature logo">
+                        <div class="project-post">
                             <img alt="" src="<?= base_url() ?>assets/images/image6.jpg">
                             <div class="hover-box">
                                 <div class="project-title">
@@ -76,7 +76,7 @@
                             </div>
                         </div>
 
-                        <div class="project-post web-design illustration">
+                        <div class="project-post">
                             <img alt="" src="<?= base_url() ?>assets/images/image6.jpg">
                             <div class="hover-box">
                                 <div class="project-title">
@@ -87,7 +87,7 @@
                             </div>
                         </div>
 
-                        <div class="project-post photography">
+                        <div class="project-post">
                             <img alt="" src="<?= base_url() ?>assets/images/image6.jpg">
                             <div class="hover-box">
                                 <div class="project-title">

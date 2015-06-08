@@ -1,18 +1,33 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Crear una vivienda</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <?= anchor(site_url('vivienda'), 'Volver al listado') ?>
-        <form action="" method="POST">
-            Barriada: <?= crearDesplegable('Barriada', $lisBarriada, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?><br />
-            Línea: <?= crearDesplegable('Linea', $lisLinea, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?><br />
-            Número: <?= crearDesplegable('Numero', $lisNumero, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?><br />
-            Observaciones : <textarea name="Observaciones"></textarea><br />
-            <input type="submit" value="Añadir" />
-        </form>
-    </body>
-</html>
+<?= anchor(site_url('vivienda'), 'Volver al listado') ?>
+<form action="" method="POST" id="contact-form">
+    <div class="text-fields">
+        <fieldset>
+            <legend>Barriada</legend> 
+        <div class="float-input">
+        <?= crearDesplegable('Barriada', $lisBarriada, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id'], FALSE, "id='name'") ?>
+            <span><i class="fa fa-user"></i></span>
+        </div>
+        </fieldset>
+        <fieldset>
+            <legend>Línea</legend> 
+        <div class="float-input">
+        <?= crearDesplegable('Linea', $lisLinea, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+            <span><i class="fa fa-user"></i></span>
+        </div>
+        </fieldset>
+        <fieldset>
+            <legend>Número</legend> 
+        <div class="float-input">
+        <?= crearDesplegable('Numero', $lisNumero, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+            <span><i class="fa fa-user"></i></span>
+        </div>
+        </fieldset>
+    </div>
+    <div class="submit-area">
+        <fieldset>
+        <legend>Observaciones</legend> 
+        <textarea name="Observaciones"></textarea><br />
+        </fieldset>
+    </div>
+    <input type="submit" id="submit_contact" class="main-button" value="Añadir" />
+</form>
