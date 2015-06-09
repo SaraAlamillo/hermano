@@ -7,7 +7,7 @@ if (!function_exists('crearDesplegable')) {
         $html = "<select name='$nombre' $atributos>\n";
         if (is_array($nullValue)) {
             if ($nullValue[$camposDatos['valor']] == $valorPorDefecto) {
-                $html .= "<option value='{$nullValue[$camposDatos['valor']]}' selected='selected'>{$nullValue[$camposDatos['desc']]}</option>\n";
+                $html .= "<option value='{$nullValue[$camposDatos['valor']]}' disabled='disabled' selected='selected'>{$nullValue[$camposDatos['desc']]}</option>\n";
             } else {
                 $html .= "<option value='{$nullValue[$camposDatos['valor']]}'>{$nullValue[$camposDatos['desc']]}</option>\n";
             }
@@ -15,7 +15,7 @@ if (!function_exists('crearDesplegable')) {
         if ($objeto) {
             foreach ($datos as $d) {
                 if ($d->$camposDatos['valor'] == $valorPorDefecto) {
-                    $html .= "<option value='{$d->$camposDatos['valor']}' selected='selected'>{$d->$camposDatos['desc']}</option>\n";
+                    $html .= "<option value='{$d->$camposDatos['valor']}' disabled='disabled' selected='selected'>{$d->$camposDatos['desc']}</option>\n";
                 } else {
                     $html .= "<option value='{$d->$camposDatos['valor']}'>{$d->$camposDatos['desc']}</option>\n";
                 }
@@ -23,7 +23,7 @@ if (!function_exists('crearDesplegable')) {
         } else {
             foreach ($datos as $d) {
                 if ($d[$camposDatos['valor']] == $valorPorDefecto) {
-                    $html .= "<option value='{$d[$camposDatos['valor']]}' selected='selected'>{$d[$camposDatos['desc']]}</option>\n";
+                    $html .= "<option value='{$d[$camposDatos['valor']]}' disabled='disabled' selected='selected'>{$d[$camposDatos['desc']]}</option>\n";
                 } else {
                     $html .= "<option value='{$d[$camposDatos['valor']]}'>{$d[$camposDatos['desc']]}</option>\n";
                 }
