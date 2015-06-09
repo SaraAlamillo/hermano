@@ -1,25 +1,29 @@
-<table border="1">
-    <tr>
-        <td>Año</td>
-        <td>Descripción</td>
-        <td>Primer pago</td>
-        <td>Segundo pago</td>
-    </tr>
-    <?php foreach ($listado as $l): ?>
+<table class="table table-striped table-hover">
+    <thead>
         <tr>
-            <td><?= $l->anio ?></td>
-            <td><?= $l->descripcion ?></td>
-            <?php if (empty($l->plazo1)): ?>
-                <td>NO PAGADO</td>
-            <?php else: ?>
-                <td><?= $l->plazo1 ?></td>
-            <?php endif; ?>
-            <?php if (empty($l->plazo2)): ?>
-                <td>NO PAGADO</td>
-            <?php else: ?>
-                <td><?= $l->plazo2 ?></td>
-            <?php endif; ?>
-            </td>
+            <td>Año</td>
+            <td>Descripción</td>
+            <td>Primer pago</td>
+            <td>Segundo pago</td>
         </tr>
-    <?php endforeach; ?>
+    </thead>
+    <tbody>
+        <?php foreach ($listado as $l): ?>
+            <tr>
+                <td><?= $l->anio ?></td>
+                <td><?= $l->descripcion ?></td>
+                <?php if (empty($l->plazo1)): ?>
+                    <td>NO PAGADO</td>
+                <?php else: ?>
+                    <td><?= $l->plazo1 ?></td>
+                <?php endif; ?>
+                <?php if (empty($l->plazo2)): ?>
+                    <td>NO PAGADO</td>
+                <?php else: ?>
+                    <td><?= $l->plazo2 ?></td>
+                <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
 </table>

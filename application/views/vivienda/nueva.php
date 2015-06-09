@@ -4,7 +4,7 @@
         <fieldset>
             <legend>Barriada</legend> 
         <div class="float-input">
-        <?= crearDesplegable('Barriada', $lisBarriada, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id'], FALSE, "id='name'") ?>
+        <?= crearDesplegable('Barriada', $lisBarriada, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id'], FALSE) ?>
             <span><i class="fa fa-user"></i></span>
         </div>
         </fieldset>
@@ -25,8 +25,8 @@
     </div>
     <div class="submit-area">
         <fieldset>
-        <legend>Observaciones</legend> 
-        <textarea name="Observaciones"></textarea><br />
+            <legend>Observaciones</legend> 
+            <textarea name="Observaciones"></textarea>
         </fieldset>
     </div>
     <input type="submit" id="submit_contact" class="main-button" value="Añadir" />
