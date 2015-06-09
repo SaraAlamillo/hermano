@@ -65,9 +65,6 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'hermano',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -83,3 +80,16 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+
+define("SERVIDOR", FALSE);
+
+if (SERVIDOR) {
+    $db['default']['username'] = '2daw1415_sara';
+    $db['default']['password'] = 'llooyos%80';
+    $db['default']['database'] = '2daw1415_sara02';
+} else {
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = '';
+    $db['default']['database'] = 'hermano';
+}
