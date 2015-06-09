@@ -1,168 +1,98 @@
 <?= anchor(site_url('contacto'), 'Volver al listado') ?>
 <form action="" method="POST" id="contact-form">
     <div class="text-fields">
-        <fieldset>
-            <legend>Vivienda</legend> 
             <div class="float-input">
-                <?= crearDesplegable('vivienda', $viviendas, '', ['nombre' => '', 'id' => '']) ?>
+                <?= crearDesplegable('vivienda', $viviendas, '', ['nombre' => 'Vivienda', 'id' => '']) ?>
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Tratamiento</legend> 
             <div class="float-input">
-                <?= crearDesplegable('tratamiento', $lisTratamiento, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+                <?= crearDesplegable('tratamiento', $lisTratamiento, '', ['nombre' => 'Tratamiento', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Nombre</legend> 
             <div class="float-input">
-                <input type="text" name="nombre" />
+                <input type="text" name="nombre" placeholder="Nombre" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Primer apellido</legend> 
             <div class="float-input">
-                <input type="text" name="apellido1" />
+                <input type="text" name="apellido1" placeholder="Primer apellido" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Segundo apellido</legend> 
             <div class="float-input">
-                <input type="text" name="apellido2" />
+                <input type="text" name="apellido2" placeholder="Segundo apellido" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>DNI</legend> 
             <div class="float-input">
-                <input type="text" name="dni" /></p>
+                <input type="text" name="dni" placeholder="DNI" /></p>
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Tipo de vía</legend> 
             <div class="float-input">
-                <?= crearDesplegable('tipo_via', $lisTipoVia, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+                <?= crearDesplegable('tipo_via', $lisTipoVia, '', ['nombre' => 'Tipo de vía', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Dirección</legend> 
             <div class="float-input">
-                <input type="text" name="direccion" />
+                <input type="text" name="direccion" placeholder="Dirección" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Número</legend> 
             <div class="float-input">
-                <input type="text" name="numero" />
+                <input type="text" name="numero" placeholder="Número" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Piso</legend> 
             <div class="float-input">
-                <input type="text" name="piso" />
+                <input type="text" name="piso" placeholder="Piso" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Puerta</legend> 
             <div class="float-input">
-                <input type="text" name="puerta" />
+                <input type="text" name="puerta" placeholder="Puerta" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Código postal</legend> 
             <div class="float-input">
-                <input type="text" name="codigo_postal" />
+                <input type="text" name="codigo_postal" placeholder="Código postal" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Población</legend> 
             <div class="float-input">
-                <input type="text" name="poblacion" />
+                <input type="text" name="poblacion" placeholder="Población" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Móvil</legend> 
             <div class="float-input">
-                <input type="text" name="movil" />
+                <input type="text" name="movil" placeholder="Móvil" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Fijo</legend> 
             <div class="float-input">
-                <input type="text" name="fijo" />
+                <input type="text" name="fijo" placeholder="Fijo" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Email</legend> 
             <div class="float-input">
-                <input type="text" name="email" />
+                <input type="text" name="email" placeholder="Email" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Twitter</legend> 
             <div class="float-input">
-                <input type="text" name="twitter" />
+                <input type="text" name="twitter" placeholder="Twitter" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Facebook</legend> 
             <div class="float-input">
-                <input type="text" name="facebook" />
+                <input type="text" name="facebook" placeholder="Facebook" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Instagram</legend> 
             <div class="float-input">
-                <input type="text" name="instagram" />
+                <input type="text" name="instagram" placeholder="Instagram" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Provincia</legend> 
             <div class="float-input">
-                <?= crearDesplegable('provincia', $lisProvincia, '', ['nombre' => '', 'idProvincia' => ''], ['desc' => 'nombre', 'valor' => 'idProvincia'], TRUE) ?>
+                <?= crearDesplegable('provincia', $lisProvincia, '', ['nombre' => 'Provincia', 'idProvincia' => ''], ['desc' => 'nombre', 'valor' => 'idProvincia'], TRUE) ?>
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Tipo de pago</legend> 
             <div class="float-input">
-                <?= crearDesplegable('tipo', $lisTipoPago, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+                <?= crearDesplegable('tipo', $lisTipoPago, '', ['nombre' => 'Tipo de pago', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Cuenta corriente</legend> 
             <div class="float-input">
-                <input type="text" name="cuenta_corriente" />
+                <input type="text" name="cuenta_corriente" placeholder="Cuenta corriente" />
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Familia</legend> 
             <div class="float-input">
-                <?= crearDesplegable('familia', $lisFamilia, '', ['nombre' => '', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+                <?= crearDesplegable('familia', $lisFamilia, '', ['nombre' => 'Familia', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
                 <span><i class="fa fa-user"></i></span>
             </div>
-        </fieldset>
-        <fieldset>
             <legend>Medalla</legend> 
             <div class="float-input">
                 <?= crearListaRadio('medalla', [['nombre' => 'Si', 'id' => '1'], ['nombre' => 'No', 'id' => '0']]) ?>
